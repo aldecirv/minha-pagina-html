@@ -1,0 +1,264 @@
+/*
+  CSS do site — Acessibilidade em mente:
+  - Contraste alto entre texto e fundo (WCAG AA: 4.5:1 no mínimo).
+  - Tamanhos de fonte legíveis e unidades relativas (rem).
+  - Espaçamento generoso para facilitar a leitura e o toque.
+  - Foco visível (outline) para navegação por teclado.
+*/
+
+/* RESET BÁSICO: remove margens/paddings padrão do navegador. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* VARIÁVEIS: cores com bom contraste e medidas reutilizáveis. */
+:root {
+  --cor-primaria: #15331a83;   /* azul escuro para cabeçalhos */
+  --cor-texto: #0f1011;      /* texto principal (quase preto) */
+  --cor-fundo: #ffffff;      /* fundo branco */
+  --cor-destaque: #c62f2f;   /* vermelho para foco e links ativos */
+  --cor-cinza-claro: #f3f4f6;/* fundo de blocos secundários */
+  --borda: #d1d5db;          /* cor de bordas */
+  --fonte-corpo: 1.1rem;     /* ~17,6px: confortável para leitura */
+}
+
+body {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  font-size: var(--fonte-corpo);
+  line-height: 1.7;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  max-width: 62rem;          /* largura máxima do conteúdo */
+  margin: 0 auto;            /* centraliza a página */
+  padding: 1rem;
+}
+
+/* FOCUS VISÍVEL: permite navegação por teclado com indicação clara. */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+/* HEADER */
+.site-header {
+  background-color: var(--cor-primaria);
+  color: #080808;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.site-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.tagline {
+  color: #dbeafe; /* azul bem claro sobre fundo escuro (contraste alto) */
+}
+
+.logo {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+/* NAVEGAÇÃO */
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.site-header nav a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  text-decoration: underline;
+}
+
+/* SEÇÕES */
+section {
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: var(--cor-primaria);
+  border-bottom: 2px solid var(--cor-borda);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  color: var(--cor-primaria);
+  margin-bottom: 0.25rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+  color: var(--cor-primaria);
+  margin-bottom: 0.5rem;
+}
+
+/* ARTIGOS */
+article {
+  background-color: var(--cor-cinza-claro);
+  border: 1px solid var(--cor-borda);
+  border-left: 4px solid var(--cor-primaria);
+  border-radius: 0.35rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+article time {
+  font-size: 0.9rem;
+  color: #4b5563; /* cinza escuro legível sobre fundo claro */
+}
+
+/* FIGURE */
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.35rem;
+}
+
+figcaption {
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* ASIDE (barra lateral) */
+.sidebar {
+  background-color: var(--cor-cinza-claro);
+  border: 1px solid var(--cor-borda);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.sidebar ul {
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar a {
+  color: var(--cor-primaria);
+}
+
+blockquote {
+  border-left: 4px solid var(--cor-primaria);
+  padding-left: 1rem;
+  font-style: italic;
+  color: #4b5563;
+}
+
+/* FORMULÁRIO */
+form {
+  background-color: var(--cor-cinza-claro);
+  border: 1px solid var(--cor-borda);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  max-width: 40rem;
+}
+
+form p {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 2px solid var(--cor-borda);
+  border-radius: 0.35rem;
+  background-color: #ffffff;
+  color: var(--cor-texto);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--cor-primaria);
+}
+
+/* "PLACEHOLDER" com contraste suficiente (WCAG 4.5:1 sobre fundo branco). */
+::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+/* BOTÃO */
+button {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.35rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #16293f; /* versão mais escura do azul */
+}
+
+button:focus {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+/* FOOTER */
+.site-footer {
+  border-top: 2px solid var(--cor-borda);
+  padding-top: 1rem;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: #1f5096;
+}
+
+.site-footer nav ul {
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+}
+
+.site-footer a {
+  color: var(--cor-primaria);
+}
+
+/* RESPONSIVIDADE: empilha a navegação em telas pequenas. */
+@media (max-width: 40rem) {
+  .site-header h1 {
+    font-size: 1.5rem;
+  }
+}

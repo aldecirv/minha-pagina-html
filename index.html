@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!--
+    META CHARSET: define a codificação de caracteres, garantindo que
+    acentos e caracteres especiais do português sejam exibidos corretamente.
+  -->
+  <meta charset="UTF-8">
+
+  <!-- META VIEWPORT: permite o design responsivo em dispositivos móveis. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- META DESCRIPTION: descrição exibida nos resultados de busca (SEO). -->
+  <meta name="description" content="Site demonstrativo de HTML5 semântico e acessibilidade web.">
+
+  <!-- TÍTULO: aparece na aba do navegador e é o primeiro conteúdo lido pelo leitor de tela. -->
+  <title>Acessibilidade Web — HTML5 Semântico</title>
+
+  <!-- CSS externo: mantém a estrutura (HTML) separada da apresentação (CSS). -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!--
+    HEADER
+    Função: contém a introdução do site (título + logotipo) e pode abrigar a navegação.
+    Acessibilidade: o <h1> é o título principal da página e deve ser único.
+  -->
+  <header class="site-header">
+    <img src="img\minhaprimeira imagem.jpg" alt="Logo do site" width="100" height="100">
+   
+    <h1>MEU PRIMEIRO SITE</h1>
+    <p class="tagline">Pra relatar minhas experencias em html de forma online neste site.</p>
+
+    <!--
+      NAV
+      Função: navegação principal do site (links para seções internas).
+      Acessibilidade: o atributo aria-label descreve o propósito da navegação
+      para leitores de tela, diferenciando-a de outras listas de links.
+    -->
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#artigos">Artigos</a></li>
+        <li><a href="#recursos">Recursos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!--
+    MAIN
+    Função: contém o conteúdo principal e único da página.
+    Acessibilidade: deve existir apenas um <main> por página; o leitor de tela
+    permite "pular direto para o conteúdo" usando este elemento.
+  -->
+  <main>
+
+    <!--
+      SECTION
+      Função: agrupa conteúdos relacionados em um mesmo tema.
+      Acessibilidade: cada seção tem um <h2> descrevendo claramente o assunto.
+    -->
+    <section id="sobre" aria-labelledby="titulo-sobre">
+      <h2 id="titulo-sobre">veja minhas experencias em html</h2>
+      <p>
+        O HTML5 semântico usa <strong>tags com significado</strong> para estruturar a página.
+        Em vez de <code>&lt;div&gt;</code> sem sentido, usamos elementos como
+        <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> e
+        <code>&lt;footer&gt;</code>, que comunicam o papel de cada parte do conteúdo tanto
+        para o navegador quanto para tecnologias assistivas.
+      </p>
+
+      <!--
+        FIGURE + FIGCAPTION
+        Função: agrupa uma imagem/gráfico com sua legenda descritiva.
+        Acessibilidade: o atributo alt descreve a imagem para quem não pode vê-la;
+        o <figcaption> fornece contexto adicional para todos os usuários.
+      -->
+      <figure>
+        <img src="img\minhaprimeira imagem.jpg"
+             alt="Diagrama ilustrando as principais tags semânticas do HTML5"
+             width="600" height="300">
+        <figcaption>Figura 1 — Principais elementos semânticos do HTML5.</figcaption>
+      </figure>
+    </section>
+
+    <!-- SECTION: agrupa todos os artigos independentes em um mesmo tema. -->
+    <section id="artigos" aria-labelledby="titulo-artigos">
+      <h2 id="titulo-artigos">Artigos recentes</h2>
+
+      <!--
+        ARTICLE
+        Função: representa um conteúdo independente, que faz sentido por si só
+        e pode ser distribuído ou reutilizado (ex.: em um feed RSS).
+        Acessibilidade: usa <h3> para o título e <time> para a data de publicação.
+      -->
+      <article>
+        <h3>Por que usar landmarks ARIA?</h3>
+        <p><time datetime="2026-08-15">22 de agosto de 2026</time></p>
+        <p>
+          Landmarks (marcos) como <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code> e
+          <code>&lt;aside&gt;</code> permitem que usuários de leitores de tela naveguem
+          rapidamente entre as regiões da página.
+        </p>
+      </article>
+
+      <article>
+        <h3>Contraste de cores e legibilidade</h3>
+        <p><time datetime="2026-08-10">22de agosto de 2026</time></p>
+        <p>
+          Manter uma taxa de contraste adequada (WCAG 2.1: pelo menos 4.5:1 para texto
+          normal) garante que o conteúdo seja legível inclusive por pessoas com baixa visão.
+        </p>
+      </article>
+    </section>
+
+    <!--
+      ASIDE
+      Função: contém informações complementares e não essenciais ao conteúdo principal,
+      como uma barra lateral com links relacionados.
+      Acessibilidade: usa <h4> para o título, mantendo a hierarquia de cabeçalhos.
+    -->
+    <aside class="sidebar" aria-label="Conteúdo relacionado">
+      <h4>Recursos relacionados</h4>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/">W3C WAI — Web Accessibility Initiative</a></li>
+        <li><a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1</a></li>
+        <li><a href="https://developer.mozilla.org/pt-BR/">MDN Web Docs</a></li>
+      </ul>
+
+      <blockquote cite="https://www.w3.org/WAI/fundamentals/accessibility-intro/">
+        <p>"A acessibilidade não é um recurso; é um direito."</p>
+      </blockquote>
+    </aside>
+
+    <!--
+      SECTION (complementar): outro grupo de conteúdo relacionado.
+      Mantém o padrão de <h2> para título de seção.
+    -->
+    <section id="recursos" aria-labelledby="titulo-recursos">
+      <h2 id="titulo-recursos">Ferramentas de teste de acessibilidade</h2>
+      <ul>
+        <li><strong>Lighthouse</strong> (Chrome DevTools)</li>
+        <li><strong>axe DevTools</strong></li>
+        <li><strong>WAVE</strong> (webaim.org)</li>
+        <li><strong>NVDA</strong> (leitor de tela)</li>
+      </ul>
+    </section>
+
+    <!--
+      FORM
+      Função: coleta dados do usuário (aqui, uma mensagem de contato).
+      Acessibilidade: cada campo possui um <label> associado e descrições claras.
+    -->
+    <section id="contato" aria-labelledby="titulo-contato">
+      <h2 id="titulo-contato">Fale conosco</h2>
+
+      <form action="#" method="post">
+        <p>
+          <!--
+            LABEL + INPUT
+            Função: o <label> se associa ao <input> usando o atributo "for",
+            que deve corresponder ao "id" do campo.
+            Acessibilidade: clicar no rótulo foca o campo, e o leitor de tela
+            anuncia o nome do campo ao navegar até ele.
+          -->
+          <label for="nome">Aldecir vieira de araujo:</label>
+          <input type="text" id="nome" name="nome" autocomplete="name"
+                 placeholder="Ex.: Maria Silva" aria-required="true" required>
+        </p>
+
+        <p>
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" autocomplete="email"
+                 placeholder="aldecirvieiradearaujo132@gmail.com" aria-required="true" required>
+        </p>
+
+        <p>
+          <label for="assunto">Assunto:</label>
+          <select id="assunto" name="assunto">
+            <option value="">Selecione uma opção</option>
+            <option value="duvida">Dúvida</option>
+            <option value="sugestao">Sugestão</option>
+            <option value="feedback">Feedback</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="mensagem">Mensagem:</label>
+          <textarea id="mensagem" name="mensagem" rows="4" cols="40"
+                    placeholder="Escreva sua mensagem aqui..."></textarea>
+        </p>
+
+        <p>
+          <button type="submit">Enviar mensagem</button>
+        </p>
+      </form>
+    </section>
+
+  </main>
+
+  <!--
+    FOOTER
+    Função: contém informações de rodapé, como copyright e links adicionais.
+    Acessibilidade: estrutura clara com informação relevante; o "skip link"
+    é um atalho para usuários de teclado.
+  -->
+  <footer class="site-footer">
+    <p>&copy; 2026 <span lang="en">aldecir</span>. Todos os direitos reservados.</p>
+    <nav aria-label="Links de rodapé">
+      <ul>
+        <li><a href="#">Política de privacidade</a></li>
+        <li><a href="#">Termos de uso</a></li>
+        <li><a href="#sobre">Voltar ao topo</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+</body>
+</html>
